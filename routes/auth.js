@@ -56,7 +56,7 @@ router.post('/signup', async (req, res) => {
         const user = await User.findOne({ email, username });
         const user1 = await User.findOne({ username });
         if (user || user1) {
-            return res.render("signup", { ...req.body, error_msg: "A User with that email or username already exists", pageTitle: "Signup" });
+            return res.render("signup", { ...req.body, res, error_msg: "A User with that email or username already exists", pageTitle: "Signup" });
         } else {
             if (!username || !fullname || !gender || !country || !currency || !security_question || !security_answer || !email || !phone || !password || !password2) {
                 return res.render("signup", { ...req.body, res, error_msg: "Please fill all fields", pageTitle: "Signup" });
